@@ -1,3 +1,5 @@
+// Student Name: Jorens Jekabsons
+// Student ID: 251RDC082
 // week5_task1_file_io.c
 // Task 1: Read and write data from text files
 // Week 5 – Files & Modular Programming
