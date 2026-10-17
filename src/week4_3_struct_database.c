@@ -48,7 +48,7 @@ int main(void) {
 
     // TODO: Display all student records in formatted output
     printf("\n");
-    printf("%-6s %-11s %s\n", students[i].id, students[i].name, students[i].grade);
+    printf("%-6s %-11s %s\n", "ID", "Name", "Grade");
 
     for(int i = 0; i < n; i++) {
         printf("%-6d %-11s %.1f\n", students[i].id, students[i].name, students[i].grade);
