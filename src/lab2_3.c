@@ -14,7 +14,9 @@
 
 int is_prime(int n) {
     // TODO: check if n is prime using loop up to sqrt(n)
-    if (n <= 2) 
+    if (n <= 2) {
+        return 1;
+    }
     return 0; // placeholder
 }
 
@@ -24,7 +26,7 @@ for (int i = 2; i <= sqrt(n); i++) {
     }
 }
 return 1;
-}
+
 int main(void) {
     int n;
 
