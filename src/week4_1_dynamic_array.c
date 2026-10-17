@@ -30,7 +30,7 @@ int main(void) {
         printf("Memory allocation failed.\n");
         return 1;
     }
-    // Example: arr = malloc(n * sizeof(int));
+
     printf("Enter %d integers:\n", n);
     for (int i = 0; i < n; i++) {
         if (scanf("%d", &arr[i]) != 1) {
@@ -38,29 +38,12 @@ int main(void) {
             free(arr);
             return 1;
         }
+        sum = sum + arr[i];
     }
 
     // TODO: Check allocation success
     avg = (float)sum / n;
 
-    printf("\n");
-    printf("Sum: %d\n", sum);
-    printf("Average: %.2f\n", avg);
-
-    // TODO: Read n integers from user input and store in array
-    printf("Enter %d integers:\n", n);
-    for (int i = 0; i < n; i++) {
-        if (scanf("%d", &arr[i]) != 1) {
-            printf("Invalid input.\n");
-            free(arr);
-            return 1;
-        }
-    }
-
-    // TODO: Compute sum and average
-    avg = (float)sum / n;
-
-    // TODO: Print the results
     printf("\n");
     printf("Sum: %d\n", sum);
     printf("Average: %.2f\n", avg);
