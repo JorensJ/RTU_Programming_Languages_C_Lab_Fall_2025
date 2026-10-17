@@ -23,7 +23,6 @@ int main(void) {
         return 1;
     }
 
-    // TODO: Allocate memory for n integers using malloc
     arr = malloc(n * sizeof(int));
 
     if (arr == NULL) {
@@ -41,14 +40,12 @@ int main(void) {
         sum = sum + arr[i];
     }
 
-    // TODO: Check allocation success
     avg = (float)sum / n;
 
     printf("\n");
     printf("Sum: %d\n", sum);
     printf("Average: %.2f\n", avg);
 
-    // TODO: Free allocated memory
     free(arr);
 
     return 0;
