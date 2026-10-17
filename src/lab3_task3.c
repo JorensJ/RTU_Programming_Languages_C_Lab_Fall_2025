@@ -55,5 +55,5 @@ void my_strcpy(char *dest, const char *src) {
         dest++;
         src++;
     }
-    *dest = '\0'; // Null-terminate the destination string
+    *dest = '\0';
 }
