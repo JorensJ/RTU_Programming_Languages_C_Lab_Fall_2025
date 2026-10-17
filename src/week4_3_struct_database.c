@@ -12,7 +12,6 @@
 #include <stdlib.h>
 #include <string.h>
 
-// TODO: Define struct Student with fields name, id, grade
 struct Student {
     char name[50];
     int id;
@@ -29,14 +28,12 @@ int main(void) {
         return 1;
     }
 
-    // TODO: Allocate memory for n Student structs using malloc
     students = malloc(n * sizeof(struct Student));
     if (students == NULL) {
         printf("Memory allocation failed.\n");
         return 1;
     }
 
-    // TODO: Read student data in a loop
     for (int i = 0; i < n; i++) {
         printf("Enter data for student %d: ", i + 1);
         if (scanf("%s %d %f", students[i].name, &students[i].id, &students[i].grade) != 3) {
@@ -46,14 +43,12 @@ int main(void) {
         }
     }
 
-    // TODO: Display all student records in formatted output
     printf("\n");
     printf("%-6s %-11s %s\n", "ID", "Name", "Grade");
 
     for(int i = 0; i < n; i++) {
         printf("%-6d %-11s %.1f\n", students[i].id, students[i].name, students[i].grade);
     }
-    // TODO: Free allocated memory
     free(students);
 
     return 0;
