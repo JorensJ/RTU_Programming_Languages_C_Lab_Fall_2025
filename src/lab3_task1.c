@@ -62,7 +62,7 @@ int array_max(int arr[], int size) {
             my_max = arr[i];
         }
     }   
-    return 0; // placeholder
+    return my_max; // placeholder
 }
 
 int array_sum(int arr[], int size) {
