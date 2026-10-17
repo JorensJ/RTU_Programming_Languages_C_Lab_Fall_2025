@@ -1,3 +1,5 @@
+// Student Name: Jorens Jekabsons
+// Student ID: 251RDC082
 // week5_task2_struct_save_load.c
 // Task 2: Save and load structured records from a file
 // Week 5 – Files & Modular Programming
