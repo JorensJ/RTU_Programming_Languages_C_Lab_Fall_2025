@@ -18,10 +18,10 @@ typedef struct {
 } Student;
 
 // Function prototypes
-int load_students(Student arr[]);
-void save_students(Student arr[], int count);
+int load_students(Student arr[], int max);
+int save _students(const Student arr[], int count);
 void add_student(Student arr[], int *count);
-void list_students(Student arr[], int count);
+void list_students(const Student arr[], int count);
 
 int main(void) {
     Student students[MAX_STUDENTS];
@@ -29,6 +29,8 @@ int main(void) {
     int choice;
 
     // TODO: Load existing data from file using load_students()
+    count = load_students(students, MAX_STUDENTS);
+    printf("Loaded %d from %s\n", count, DATA_FILE);
 
     do {
         printf("\n=== Student Management System ===\n");
@@ -36,17 +38,26 @@ int main(void) {
         printf("2. Add student\n");
         printf("3. Save and Exit\n");
         printf("Select an option: ");
-        scanf("%d", &choice);
+        if (scanf("%d", &choice) != 1) {
+            choice = 0; // Invalid input
+        }
         getchar(); // clear newline
 
         switch (choice) {
             case 1:
+            list_students(students, count);
                 // TODO: Call list_students()
                 break;
             case 2:
+            add_student(students, &count);
                 // TODO: Call add_student()
                 break;
             case 3:
+            if (save_students(students, count) == 0) {
+                printf("Data saved Goodbye!\n");
+            } else {
+                printf("Error saving data.\n");
+            }
                 // TODO: Call save_students() and exit loop
                 break;
             default:
@@ -58,6 +69,22 @@ int main(void) {
 }
 
 // TODO: Implement load_students()
+int load_students(Student arr[], int max) {
+    FILE *fp = fopen(DATA_FILE, "r");
+    if (fp == NULL) {
+        return 0;
+    }
+
+    int count = 0;
+    char line[256];
+    while(fgets(line, sizeof(line), fp) != NULL && count < max) {
+        if (sscanf(line, "%49s %d %f", arr[count].name, &arr[count].id, &arr[count].gpa) == 3) {
+            count++;
+        }
+    }
+    fclose(fp);
+    return count;
+}
 // Open DATA_FILE, read records until EOF, return number of records loaded
 int load_students(Student arr[]) {
     // ...
@@ -65,19 +92,61 @@ int load_students(Student arr[]) {
 }
 
 // TODO: Implement save_students()
+int save_students(const Student arr[], int count) {
+    FILE *fp = fopen(DATA_FILE, "w");
+    if (fp == NULL) {
+        return -1;
+    }
+
+    for (int i = 0; i < count; i++) {
+        fprintf(fp, "%s %d %.2f\n", arr[i].name, arr[i].id, arr[i].gpa);
+    }
+    fclose(fp);
+    return 0;
+}
 // Write all students to DATA_FILE
-void save_students(Student arr[], int count) {
+void add_student(Student arr[], int *count) {
+    if (*count >= MAX_STUDENTS) {
+        printf("Cannot add more students. Maximum reached.\n");
+        return;
+    }
     // ...
+}
+
+Student new student;
+char input_buffer[256];
+printf("Enter name: ");
+fgets(input_buffer, sizeof(input_buffer), stdin);
+input_buffer[strcspn(input_buffer, "\n")] = 0;
+
+if (strlen(input_buffer) == 0) || strchr(input_buffer,',') != NULL) {
+    printf("Name cannot be empty.\n");
+    return;
+}
+strncpy(new_student.name, input_buffer);
+
+printf("Enter ID: ");
+fgets(input_buffer, sizeof(input_buffer), stdin);
+if (sscanf(input_buffer, "%d", &new_student.id) != 1 || new_student.id <= 0) {
+    printf("Invalid ID. Must be a positive integer.\n");
+    return;
+}
+printf("Enter GPA: ");
+fgets(input_buffer, sizeof(input_buffer), stdin);
+if (sscanf(input_buffer, "%f", &new_student.gpa) != 1 || new_student.gpa <= 0.0 || new_student.gpa > 4.0) {
+    printf("Invalid input. Student not added.\n");
+    return;
 }
 
 // TODO: Implement add_student()
 // Read input from user and append to array
-void add_student(Student arr[], int *count) {
-    // ...
+arr[*count] = new_student;
+(*count)++;
+printf("No student found.\n");
+return;
 }
 
-// TODO: Implement list_students()
-// Print all students in readable format
-void list_students(Student arr[], int count) {
-    // ...
-}
+printf("ID NAME GPA\n");
+for (int i = 0; i < count; i++) {
+    printf("%-6d %-19s %.2f\n", arr[i].id, arr[i].name, arr[i].gpa);
+  }
