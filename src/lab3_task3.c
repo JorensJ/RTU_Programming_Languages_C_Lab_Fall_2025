@@ -1,6 +1,6 @@
 /*
  * Lab 3, Task 3
- * Student Name, Student ID
+ * Jorens Jekabsons, Student ID: 251RDC082
  *
  * Implement basic string handling functions.
  * Write your own versions of:
