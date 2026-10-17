@@ -13,7 +13,6 @@
 */
 
 int is_prime(int n) {
-    // TODO: check if n is prime using loop up to sqrt(n)
     if (n <= 2) {
         return 0;
     }
@@ -32,7 +31,6 @@ int main(void) {
     printf("Enter an integer n (>= 2): ");
     scanf("%d", &n);
 
-    // TODO: validate input and print all primes up to n
     if (n < 2) {
         printf("Error: n must be an integer greater than or equal to 2.\n");
     } else {
