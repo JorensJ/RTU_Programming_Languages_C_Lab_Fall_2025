@@ -19,7 +19,7 @@ typedef struct {
 
 // Function prototypes
 int load_students(Student arr[], int max);
-int save _students(const Student arr[], int count);
+int save_students(const Student arr[], int count);
 void add_student(Student arr[], int *count);
 void list_students(const Student arr[], int count);
 
@@ -28,9 +28,8 @@ int main(void) {
     int count = 0;
     int choice;
 
-    // TODO: Load existing data from file using load_students()
-    count = load_students(students, MAX_STUDENTS);
-    printf("Loaded %d from %s\n", count, DATA_FILE);
+    count = load_students(students);
+    printf("Loaded %d students(s) students.txt\n", count);
 
     do {
         printf("\n=== Student Management System ===\n");
@@ -39,18 +38,16 @@ int main(void) {
         printf("3. Save and Exit\n");
         printf("Select an option: ");
         if (scanf("%d", &choice) != 1) {
-            choice = 0; // Invalid input
+            choice = 0; 
         }
-        getchar(); // clear newline
+        getchar();
 
         switch (choice) {
             case 1:
             list_students(students, count);
-                // TODO: Call list_students()
                 break;
             case 2:
             add_student(students, &count);
-                // TODO: Call add_student()
                 break;
             case 3:
             if (save_students(students, count) == 0) {
@@ -58,7 +55,6 @@ int main(void) {
             } else {
                 printf("Error saving data.\n");
             }
-                // TODO: Call save_students() and exit loop
                 break;
             default:
                 printf("Invalid option. Try again.\n");
@@ -68,7 +64,6 @@ int main(void) {
     return 0;
 }
 
-// TODO: Implement load_students()
 int load_students(Student arr[], int max) {
     FILE *fp = fopen(DATA_FILE, "r");
     if (fp == NULL) {
@@ -85,13 +80,11 @@ int load_students(Student arr[], int max) {
     fclose(fp);
     return count;
 }
-// Open DATA_FILE, read records until EOF, return number of records loaded
 int load_students(Student arr[]) {
     // ...
     return 0;
 }
 
-// TODO: Implement save_students()
 int save_students(const Student arr[], int count) {
     FILE *fp = fopen(DATA_FILE, "w");
     if (fp == NULL) {
@@ -104,13 +97,11 @@ int save_students(const Student arr[], int count) {
     fclose(fp);
     return 0;
 }
-// Write all students to DATA_FILE
 void add_student(Student arr[], int *count) {
     if (*count >= MAX_STUDENTS) {
         printf("Cannot add more students. Maximum reached.\n");
         return;
     }
-    // ...
 }
 
 Student new student;
@@ -138,8 +129,6 @@ if (sscanf(input_buffer, "%f", &new_student.gpa) != 1 || new_student.gpa <= 0.0 
     return;
 }
 
-// TODO: Implement add_student()
-// Read input from user and append to array
 arr[*count] = new_student;
 (*count)++;
 printf("No student found.\n");
