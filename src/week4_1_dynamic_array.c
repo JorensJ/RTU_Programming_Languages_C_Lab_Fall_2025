@@ -14,6 +14,8 @@
 int main(void) {
     int n;
     int *arr = NULL;
+    int sum = 0;
+    float avg = 0.0;
 
     printf("Enter number of elements: ");
     if (scanf("%d", &n) != 1 || n <= 0) {
