@@ -13,11 +13,10 @@
 
 long long factorial(int n) {
     long long result = 1;
-    // TODO: compute factorial iteratively
     for(int i = 1; i<= n; i++) {
         result *= i;
     }
-    return result; // placeholder
+    return result;
 }
 
 int main(void) {
@@ -26,7 +25,6 @@ int main(void) {
     printf("Enter a non-negative integer n: ");
     scanf("%d", &n);
 
-    // TODO: validate input, call function, print result
     if (n < 0) {
         printf("Error: n must be a non-negative integer.\n");
     } else {
